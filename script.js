@@ -3,8 +3,19 @@ const confirmPasswordInput = document.getElementById('confirmPassword');
 const strengthMessage = document.getElementById('strengthMessage');
 const matchMessage = document.getElementById('matchMessage');
 const form = document.getElementById('signupForm');
+const toggleBtn = document.getElementById('toggleBtn');
 
-// Check password strength while typing
+// Show / Hide passwords
+function togglePasswords() {
+    const show = passwordInput.type === 'password';
+
+    passwordInput.type = show ? 'text' : 'password';
+    confirmPasswordInput.type = show ? 'text' : 'password';
+
+    toggleBtn.textContent = show ? 'Hide' : 'Show';
+}
+
+// Password strength checker
 passwordInput.addEventListener('input', checkStrength);
 
 function checkStrength() {
@@ -21,29 +32,25 @@ function checkStrength() {
         strengthMessage.textContent = '';
         strengthMessage.className = 'message';
     } else if (score <= 2) {
-        strengthMessage.textContent =
-            'Weak password! Please select something stronger.';
+        strengthMessage.textContent = 'Weak password! Please select something stronger.';
         strengthMessage.className = 'message weak';
     } else if (score <= 4) {
-        strengthMessage.textContent =
-            'Medium password. Add more security.';
+        strengthMessage.textContent = 'Medium password. Add more security.';
         strengthMessage.className = 'message medium';
     } else {
-        strengthMessage.textContent =
-            'Strong password! Excellent choice.';
+        strengthMessage.textContent = 'Strong password! Excellent choice.';
         strengthMessage.className = 'message strong';
     }
 
     checkMatch();
 }
 
-// Check whether passwords match
+// Confirm password checker
 confirmPasswordInput.addEventListener('input', checkMatch);
 
 function checkMatch() {
     if (confirmPasswordInput.value === '') {
         matchMessage.textContent = '';
-        matchMessage.className = 'message';
         return;
     }
 
@@ -56,11 +63,9 @@ function checkMatch() {
     }
 }
 
-// Generate a strong password
+// Generate strong password
 function generatePassword() {
-    const chars =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!';
-
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!';
     let password = '';
 
     for (let i = 0; i < 12; i++) {
@@ -73,7 +78,7 @@ function generatePassword() {
     matchMessage.textContent = '';
 }
 
-// Form submission validation
+// Form validation
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -82,25 +87,21 @@ form.addEventListener('submit', function (e) {
     const phone = document.getElementById('phone').value.trim();
     const password = passwordInput.value;
 
-    // Require either email or phone
     if (email === '' && phone === '') {
         alert('Please enter either Email or Phone Number.');
         return;
     }
 
-    // Passwords must match
     if (password !== confirmPasswordInput.value) {
         alert('Passwords do not match.');
         return;
     }
 
-    // Password should not contain username
     if (password.toLowerCase().includes(username.toLowerCase())) {
         alert('Password should not contain the username.');
         return;
     }
 
-    // Final strong password validation
     const strong =
         password.length >= 8 &&
         /[A-Z]/.test(password) &&
@@ -113,7 +114,6 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    // Save data in localStorage (demo database)
     const userData = {
         username,
         email,
@@ -128,4 +128,8 @@ form.addEventListener('submit', function (e) {
 
     strengthMessage.textContent = '';
     matchMessage.textContent = '';
+
+    toggleBtn.textContent = 'Show';
+    passwordInput.type = 'password';
+    confirmPasswordInput.type = 'password';
 });
