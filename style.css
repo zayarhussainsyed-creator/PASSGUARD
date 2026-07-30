@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Attractive animated gradient background */
+    background: linear-gradient(135deg, #ff512f, #dd2476, #7b2ff7, #00c6ff);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    width: 420px;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 28px;
+    color: #fff;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.92);
+    color: #222;
+}
+
+input:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.35);
+}
+
+.contact-row {
+    display: flex;
+    gap: 10px;
+}
+
+.contact-row input {
+    flex: 1;
+}
+
+.note {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #f2f2f2;
+}
+
+.generate-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #00f260, #0575e6);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.generate-btn:hover {
+    transform: scale(1.02);
+    opacity: 0.95;
+}
+
+.requirements {
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+.requirements-list {
+    margin-top: 6px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.requirements-list li {
+    margin-bottom: 4px;
+}
+
+.message {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.weak {
+    color: #ffb3b3;
+}
+
+.medium {
+    color: #ffe28a;
+}
+
+.strong {
+    color: #b8ffb8;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #141e30, #243b55);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+}
+
+.links {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
