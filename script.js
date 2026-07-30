@@ -63,21 +63,6 @@ function checkMatch() {
     }
 }
 
-// Generate strong password
-function generatePassword() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!';
-    let password = '';
-
-    for (let i = 0; i < 12; i++) {
-        password += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-
-    passwordInput.value = password;
-    confirmPasswordInput.value = '';
-    checkStrength();
-    matchMessage.textContent = '';
-}
-
 // Form validation
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -114,16 +99,7 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    const userData = {
-        username,
-        email,
-        phone,
-        password
-    };
-
-    localStorage.setItem('userData', JSON.stringify(userData));
-
-    alert('Account created successfully!');
+    alert('Strong password accepted!');
     form.reset();
 
     strengthMessage.textContent = '';
