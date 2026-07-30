@@ -4,7 +4,7 @@ const strengthMessage = document.getElementById('strengthMessage');
 const matchMessage = document.getElementById('matchMessage');
 const form = document.getElementById('signupForm');
 
-// Password strength checker
+// Check password strength while typing
 passwordInput.addEventListener('input', checkStrength);
 
 function checkStrength() {
@@ -37,7 +37,7 @@ function checkStrength() {
     checkMatch();
 }
 
-// Confirm password checker
+// Check whether passwords match
 confirmPasswordInput.addEventListener('input', checkMatch);
 
 function checkMatch() {
@@ -56,10 +56,11 @@ function checkMatch() {
     }
 }
 
-// Generate strong password
+// Generate a strong password
 function generatePassword() {
     const chars =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!';
+
     let password = '';
 
     for (let i = 0; i < 12; i++) {
@@ -72,7 +73,7 @@ function generatePassword() {
     matchMessage.textContent = '';
 }
 
-// Form validation
+// Form submission validation
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -99,7 +100,7 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    // Strong password validation
+    // Final strong password validation
     const strong =
         password.length >= 8 &&
         /[A-Z]/.test(password) &&
@@ -112,7 +113,7 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    // Save in localStorage (demo database)
+    // Save data in localStorage (demo database)
     const userData = {
         username,
         email,
@@ -124,6 +125,7 @@ form.addEventListener('submit', function (e) {
 
     alert('Account created successfully!');
     form.reset();
+
     strengthMessage.textContent = '';
     matchMessage.textContent = '';
 });
